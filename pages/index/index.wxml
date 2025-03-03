@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 日期选择器 -->
+  <view class="date-picker">
+    <scroll-view class="date-scroll" scroll-x="true">
+      <view class="date-list">
+        <view class="date-item {{currentDateIndex === index ? 'active' : ''}}" 
+              wx:for="{{dates}}" 
+              wx:key="date"
+              bindtap="selectDate"
+              data-index="{{index}}">
+          <text class="day">{{item.day}}</text>
+          <text class="date">{{item.date}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 比赛列表 -->
+  <view class="matches-container">
+    <view class="match-card" wx:for="{{matches}}" wx:key="id">
+      <view class="match-header">
+        <text class="league-name">{{item.league}}</text>
+        <text class="match-time">{{item.time}}</text>
+      </view>
+      
+      <view class="match-teams">
+        <view class="team home">
+          <image class="team-logo" src="{{item.homeTeamLogo}}" mode="aspectFit"></image>
+          <text class="team-name">{{item.homeTeam}}</text>
+        </view>
+        
+        <view class="match-status">
+          <block wx:if="{{item.status === 'NS'}}">
+            <text class="vs">VS</text>
+          </block>
+          <block wx:else>
+            <view class="score">
+              <text>{{item.score.home}}</text>
+              <text class="score-divider">-</text>
+              <text>{{item.score.away}}</text>
+            </view>
+            <text class="status-text">{{item.status === '1H' ? '上半场' : 
+                                     item.status === 'HT' ? '中场休息' : 
+                                     item.status === '2H' ? '下半场' : 
+                                     item.status === 'FT' ? '完赛' : '进行中'}}</text>
+          </block>
+        </view>
+
+        <view class="team away">
+          <image class="team-logo" src="{{item.awayTeamLogo}}" mode="aspectFit"></image>
+          <text class="team-name">{{item.awayTeam}}</text>
+        </view>
+      </view>
+
+      <view class="match-footer">
+        <button class="predict-btn" bindtap="navigateToPrediction" data-match="{{item}}">AI预测</button>
+      </view>
+    </view>
+
+    <view wx:if="{{matches.length === 0}}" class="no-matches">
+      <text>今日暂无比赛</text>
+    </view>
+  </view>
+</view>

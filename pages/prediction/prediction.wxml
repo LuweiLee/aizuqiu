@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 比赛信息 -->
+  <view class="match-info card">
+    <view class="teams">
+      <view class="team home">
+        <image class="team-logo" src="{{match.homeTeamLogo}}" mode="aspectFit"></image>
+        <text class="team-name">{{match.homeTeam}}</text>
+      </view>
+      <view class="vs">VS</view>
+      <view class="team away">
+        <image class="team-logo" src="{{match.awayTeamLogo}}" mode="aspectFit"></image>
+        <text class="team-name">{{match.awayTeam}}</text>
+      </view>
+    </view>
+    <view class="match-meta">
+      <text class="league">{{match.league}}</text>
+      <text class="time">{{match.time}}</text>
+    </view>
+  </view>
+
+  <!-- AI分析结果 -->
+  <view class="analysis card">
+    <view class="section-title">AI分析</view>
+    <view class="analysis-content">
+      <text>{{analysis}}</text>
+    </view>
+  </view>
+
+  <!-- AI预测结果 -->
+  <view class="prediction card">
+    <view class="section-title">胜率预测</view>
+    <view class="prediction-stats">
+      <view class="stat-item">
+        <text class="label">主队胜</text>
+        <text class="value">{{prediction.homeWin}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="label">平局</text>
+        <text class="value">{{prediction.draw}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="label">客队胜</text>
+        <text class="value">{{prediction.awayWin}}</text>
+      </view>
+    </view>
+  </view>
+</view>
