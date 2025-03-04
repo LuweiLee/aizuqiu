@@ -40,7 +40,8 @@
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
     "useStaticServer": true,
-    "condition": false
+    "condition": false,
+    "requestDomains": ["h.jsty.com"]
   },
   "appid": "wx1e09e17ac0c6d033",
   "projectname": "aizuqiu",
